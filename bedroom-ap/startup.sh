@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Needed for Mega cloud backups
+export LD_LIBRARY_PATH=/usr/local/lib/
+
 chmod -R 700 /root/.ssh
 chmod 777 /run/screen
 
@@ -18,3 +21,4 @@ chmod 700 -R /etc/ssh /var/run/sshd
 /etc/init.d/nis        start
 /etc/init.d/ssh        start
 
+nohup /usr/local/bin/mega-cmd-server &
