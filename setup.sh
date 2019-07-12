@@ -87,7 +87,7 @@ installDebian() {
     
     # ---------------------------------------------------------------------
 
-    chroot ${DEBIAN_DIR} apt-get install -y htop lsb-release ntpdate screen sudo vim rsyslog ntp cron rpcbind postfix nis ssh
+    chroot ${DEBIAN_DIR} apt-get install -y htop lsb-release ntpdate rsync screen sudo vim rsyslog ntp cron rpcbind postfix nis ssh
 
     cp -rf /mnt/smbshare/Development/github/sfloess/dd-wrt/config/etc     ${DEBIAN_DIR}
     cp -rf /mnt/smbshare/Development/github/sfloess/dd-wrt/`hostname`/etc ${DEBIAN_DIR}
