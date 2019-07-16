@@ -65,8 +65,8 @@ startDebian() {
 
 # --------------------------------------------------------------
 
-startEntware
-startDebian
+startEntware >> /tmp/flossware.log 2>&1
+startDebian  >> /tmp/flossware.log 2>&1
 
 # --------------------------------------------------------------
 
