@@ -25,7 +25,7 @@ mountEntwareDirs() {
 }
 
 startEntware() {
-    /opt/etc/init.d/rc.unslung start
+    /mnt/sda1/entware/etc/init.d/rc.unslung start
 
     mountEntwareDirs
 }
