@@ -5,6 +5,8 @@
 ENTWARE_DIR=/mnt/sda1/entware
 DEBIAN_DIR=/mnt/sda1/debian_armel
 
+PATH=${ENTWARE_DIR}/bin:${ENTWARE_DIR}/sbin:$PATH
+
 NFS_DIRS='root home opt/backups opt/media opt/nas opt/shared'
 
 # ---------------------------------------------------------------------
@@ -25,7 +27,7 @@ mountEntwareDirs() {
 }
 
 startEntware() {
-    /mnt/sda1/entware/etc/init.d/rc.unslung start
+    ${ENTWARE_DIR}/etc/init.d/rc.unslung start
 
     mountEntwareDirs
 }
