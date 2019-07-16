@@ -22,6 +22,8 @@ unmountEntwareDirs() {
 
 stopEntware() {
     unmountEntwareDirs
+
+    /opt/etc/init.d/rc.unslung stop
 }
 
 # ---------------------------------------------------------------------

@@ -25,6 +25,8 @@ mountEntwareDirs() {
 }
 
 startEntware() {
+    /opt/etc/init.d/rc.unslung start
+
     mountEntwareDirs
 }
 
