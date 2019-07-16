@@ -26,6 +26,7 @@ chmod 700 -R /etc/ssh /var/run/sshd
 /usr/bin/rclone mount --allow-other --daemon Google:     /mnt/cloud/Google
 /usr/bin/rclone mount --allow-other --daemon Jottacloud: /mnt/cloud/Jottacloud
 /usr/bin/rclone mount --allow-other --daemon Microsoft:  /mnt/cloud/Microsoft
+/usr/bin/rclone mount --allow-other --daemon OpenDrive:  /mnt/cloud/OpenDrive
 /usr/bin/rclone mount --allow-other --daemon Yandex:     /mnt/cloud/Yandex
 /usr/bin/rclone mount --allow-other --daemon pCloud:     /mnt/cloud/pCloud
 
