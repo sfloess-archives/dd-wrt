@@ -5,15 +5,11 @@
 ENTWARE_DIR=/mnt/sda1/entware
 DEBIAN_DIR=/mnt/sda1/debian_armel
 
-PATH=${ENTWARE_DIR}/bin:${ENTWARE_DIR}/sbin:$PATH
-
 NFS_DIRS='root home opt/backups opt/media opt/nas opt/shared'
 
 # ---------------------------------------------------------------------
 
 mountEntwareDirs() {
-    mount -o bind ${ENTWARE_DIR} /opt
-
     modprobe fuse
 
     for nfsDir in ${NFS_DIRS}
@@ -27,7 +23,9 @@ mountEntwareDirs() {
 }
 
 startEntware() {
-    ${ENTWARE_DIR}/etc/init.d/rc.unslung start
+    mount -o bind ${ENTWARE_DIR} /opt
+
+    /opt/etc/init.d/rc.unslung start
 
     mountEntwareDirs
 }
