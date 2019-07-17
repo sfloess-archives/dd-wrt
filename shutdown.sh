@@ -18,7 +18,16 @@ unmountEntwareDirs() {
     done
 }
 
+stopEntwareApps() {
+    if [ -e `dirname $0`/`hostname`/stop-entware.sh ]
+    then
+        `dirname $0`/`hostname`/stop-entware.sh >> /tmp/flossware.log 2>&1
+    fi
+}
+
 stopEntware() {
+    stopEntwareApps
+
     unmountEntwareDirs
 
     /opt/etc/init.d/rc.unslung stop
@@ -39,7 +48,10 @@ unmountDebianDirs() {
 }
 
 shutdownDebianApps() {
-    /usr/sbin/chroot ${DEBIAN_DIR} /mnt/admin-ap/root/Development/github/sfloess/dd-wrt/`hostname`/shutdown.sh >> /tmp/flossware.log 2>&1
+    if [ -e ${DEBIAN_DIR}/mnt/admin-ap/root/Development/github/sfloess/dd-wrt/`hostname`/stop-debian.sh ]
+    then
+        /usr/sbin/chroot ${DEBIAN_DIR} /mnt/admin-ap/root/Development/github/sfloess/dd-wrt/`hostname`/stop-debian.sh >> /tmp/flossware.log 2>&1
+    fi
 }
 
 stopDebian() {

@@ -22,12 +22,23 @@ mountEntwareDirs() {
     done
 }
 
+startEntwareApps() {
+    if [ -e `dirname $0`/`hostname`/start-entware.sh ]
+    then
+        `dirname $0`/`hostname`/start-entware.sh >> /tmp/flossware.log 2>&1
+    else
+	echo "No entware script for host:  `dirname $0`/`hostname`/start-entware.sh" >> /tmp/flossware.log 2>&1
+    fi
+}
+
 startEntware() {
     mount -o bind ${ENTWARE_DIR} /opt
 
     /opt/etc/init.d/rc.unslung start
 
     mountEntwareDirs
+
+    startEntwareApps
 }
 
 # ---------------------------------------------------------------------
@@ -53,7 +64,12 @@ copyDebianFiles() {
 }
 
 startDebianApps() {
-    /usr/sbin/chroot ${DEBIAN_DIR} /mnt/admin-ap/root/Development/github/sfloess/dd-wrt/`hostname`/startup.sh >> /tmp/flossware.log 2>&1
+    if [ -e ${DEBIAN_DIR}/mnt/admin-ap/root/Development/github/sfloess/dd-wrt/`hostname`/start-debian.sh ]
+    then
+        /usr/sbin/chroot ${DEBIAN_DIR} /mnt/admin-ap/root/Development/github/sfloess/dd-wrt/`hostname`/start-debian.sh >> /tmp/flossware.log 2>&1
+    else
+	echo "No debian script for host:  ${DEBIAN_DIR}/mnt/admin-ap/root/Development/github/sfloess/dd-wrt/`hostname`/start-debian.sh" >> /tmp/flossware.log
+    fi
 }
 
 startDebian() {
@@ -64,6 +80,9 @@ startDebian() {
 }
 
 # --------------------------------------------------------------
+
+echo "`dirname $0`/`hostname`/start-entware.sh" >> /tmp/flossware.log
+echo "${DEBIAN_DIR}/mnt/admin-ap/root/Development/github/sfloess/dd-wrt/`hostname`/start-debian.sh" >> /tmp/flossware.log
 
 startEntware >> /tmp/flossware.log 2>&1
 startDebian  >> /tmp/flossware.log 2>&1
