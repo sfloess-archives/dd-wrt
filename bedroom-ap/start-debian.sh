@@ -33,14 +33,26 @@ mkdir -p /mnt/cloud/pCloud
 
 chmod 755 /mnt/cloud/*
 
+#     Free Storage
+# Name         Storage
+# --------------------
+# Box          50 GB *
+# Dropbox      02 GB
+# Google       15 GB
+# Mega         50 GB *
+# Microsoft    05 GB
+# OpenDrive    50 GB *
+# Yandex       10 GB
+# pCloud       07 GB
+
 /usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Box:/FlossWare        /mnt/cloud/Box
-/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Dropbox:/FlossWare    /mnt/cloud/Dropbox
-/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Google:/FlossWare     /mnt/cloud/Google
-/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Jottacloud:/FlossWare /mnt/cloud/Jottacloud
+#/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Dropbox:/FlossWare    /mnt/cloud/Dropbox
+#/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Google:/FlossWare     /mnt/cloud/Google
+#/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Jottacloud:/FlossWare /mnt/cloud/Jottacloud
 /usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Mega:/FlossWare       /mnt/cloud/Mega
-/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Microsoft:/FlossWare  /mnt/cloud/Microsoft
+#/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Microsoft:/FlossWare  /mnt/cloud/Microsoft
 /usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon OpenDrive:/FlossWare  /mnt/cloud/OpenDrive
-/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Yandex:/FlossWare     /mnt/cloud/Yandex
-/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon pCloud:/FlossWare     /mnt/cloud/pCloud
+#/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon Yandex:/FlossWare     /mnt/cloud/Yandex
+#/usr/bin/sudo /root/gopath/bin/rclone mount --allow-other --vfs-cache-mode full --daemon pCloud:/FlossWare     /mnt/cloud/pCloud
 
 nohup /usr/local/bin/mega-cmd-server &
