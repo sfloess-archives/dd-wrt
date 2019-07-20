@@ -70,9 +70,9 @@ chmod 755 /mnt/cloud/*
 # ----------------------------------------------------
 # Combine individual drives into one...
 
-mkdir -p /mnt/cloud/Shared 
+mkdir -p /mnt/shared 
 
-mhddfs /mnt/cloud/Box /mnt/cloud/OpenDrive /mnt/cloud/Shared
+mhddfs /mnt/cloud/Box /mnt/cloud/OpenDrive /mnt/shared
 
 # ----------------------------------------------------
 
