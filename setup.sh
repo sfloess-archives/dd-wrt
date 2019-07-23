@@ -3,6 +3,7 @@
 # ---------------------------------------------------------------------
 
 DEBIAN_DIR=/mnt/sda1/debian_armel
+#DEBIAN_DIR=/mnt/sda1/debian_mips
 ENTWARE_DIR=/mnt/sda1/entware
 
 # --------------------------------------------------------------
@@ -21,13 +22,14 @@ installEntware() {
     cd ${ENTWARE_DIR}
 
     wget http://bin.entware.net/armv7sf-k3.2/installer/generic.sh
+    #wget wget http://bin.entware.net/mipssf-k3.4/installer/generic.sh
    
     sh ./generic.sh
 
     opkg update
     opkg upgrade
 
-    opkg install nfusr
+    opkg install nfusr busybox
 }
 
 # --------------------------------------------------------------
@@ -46,8 +48,10 @@ installDebian() {
     cd /mnt/sda1
 
     rm -rf debian_armel
+    #rm -rf debian_mips
 
-    tar xvf /mnt/smbshare/nas/backups/OperatingSystem/debian-9_armel.tar
+    tar xvf /mnt/smbshare/nas/backups/OperatingSystem/debian-10_armel.tar
+    #tar xvf /mnt/smbshare/nas/backups/OperatingSystem/debian-10_mips.tar
 
     # ---------------------------------------------------------------------
 
@@ -96,10 +100,11 @@ installDebian() {
 
     rm -rf ${DEBIAN_DIR}/root/.ssh ${DEBIAN_DIR}/root/.bashrc ${DEBIAN_DIR}/home
 
-    ln -s /mnt/admin-ap/root/.screenrc ${DEBIAN_DIR}/root/.screenrc
-    ln -s /mnt/admin-ap/root/.ssh      ${DEBIAN_DIR}/root/.ssh
-    ln -s /mnt/admin-ap/root/.bashrc   ${DEBIAN_DIR}/root/.bashrc
-    ln -s /mnt/admin-ap/home           ${DEBIAN_DIR}/home
+    ln -s /mnt/admin-ap/root/Development ${DEBIAN_DIR}/root/Development
+    ln -s /mnt/admin-ap/root/.screenrc   ${DEBIAN_DIR}/root/.screenrc
+    ln -s /mnt/admin-ap/root/.ssh        ${DEBIAN_DIR}/root/.ssh
+    ln -s /mnt/admin-ap/root/.bashrc     ${DEBIAN_DIR}/root/.bashrc
+    ln -s /mnt/admin-ap/home             ${DEBIAN_DIR}/home
 
     # ---------------------------------------------------------------------
 
